@@ -1,0 +1,16 @@
+---
+########################################################################
+# THIS WILL INSTALL DOCKER, GIT, JAVA AND DOWNLOAD THE JENKINS PACKAGE #
+########################################################################
+- hosts: testserver
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Install Git.
+    yum: name=git state=latest
+  - name: Install Docker.
+    yum: name=docker state=latest
+  - name: Install Java.
+    yum: name=java state=latest
+  - name: Download the jenkins package.
+    get_url: url=http://mirrors.jenkins.io/war-stable/latest/jenkins.war dest=/home/ec2-user 
