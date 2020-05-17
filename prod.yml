@@ -1,0 +1,12 @@
+---
+##########################################################
+# THIS WILL INSTALL JAVA AND DOCKER ON THE PROD MACHINES #
+##########################################################
+- hosts: prodserver
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Install docker
+    yum: name=docker state=latest
+  - name: Install java
+    yum: name=java state=latest
