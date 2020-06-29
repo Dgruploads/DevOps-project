@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('file:///home/dgruploads/Downloads/wallapaper.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-top: 10;
+  margin-bottom: 1em;
+}
+
+.hero .btn {
+  display: block;
+  width: 200px;
+  padding: 1em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  border: 3px solid white;
+  border-radius: 20px;
+  background-color: rgba(157, 132, 239, 0.4);
+}
+
+header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  line-height: 50px;
+}
+
+header * {
+  display: inline-block;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  padding: 0 10px;
+  border: 1px;
+}
+
+header ul {
+  padding: 0;
+}
+
+header li {
+  color: white;
+}
+
+section {
+  height: 100vh;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+nav a {
+  display: block;
+  padding: 0 10px;
+  color: #FFF;
+  font-size: 20px;
+  line-height: 60px;
+  text-decoration: none;
+  align-items: right;
+  text-align: right;
+}
+
+nav a:hover {
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0.34,0.34,0.34,0.34), 0 17px 50px 0 rgba(0.19,0.19,0.19,0.19);
+  border: 1px;
+}
+
+nav ul li {
+  border: 10px;
+}
+
+.div1 {
+    float: left;
+    width: 48%;
+    height: 300px;
+    border: 8px solid blue;
+    padding: 10px;
+    text-align: center;
+}
+
+.div2 {
+    float: right;
+    width: 48%;
+    height: 300px;
+    padding: 10px;
+    border: 8px solid red;
+    text-align: center;
+}
