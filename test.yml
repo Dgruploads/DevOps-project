@@ -10,7 +10,11 @@
     yum: name=git state=latest
   - name: Install Docker.
     yum: name=docker state=latest
+  - name: Start the Docker service
+    service: name=docker state=started
   - name: Install Java.
     yum: name=java state=latest
   - name: Download the jenkins package.
     get_url: url=http://mirrors.jenkins.io/war-stable/latest/jenkins.war dest=/home/ec2-user 
+  - name: Start jenkins
+    command: java -jar /home/ec2-user/jenkins.war &
