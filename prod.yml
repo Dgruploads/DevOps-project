@@ -8,5 +8,7 @@
   tasks:
   - name: Install docker
     yum: name=docker state=latest
+  - name: Statr the Docker service
+    service: name=docker state=started
   - name: Install java
     yum: name=java state=latest
