@@ -12,3 +12,7 @@
     service: name=docker state=started
   - name: Install java
     yum: name=java state=latest
+  - name: Create directory for jenkins
+    command: mkdir /home/ec2-user/jenkins
+  - name: Give permissions to the jenkins directory
+    command: chmod 777 /home/ec2-user/jenkins
