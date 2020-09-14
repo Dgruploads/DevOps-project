@@ -8,6 +8,8 @@
   tasks:
   - name: Install docker in the test environment.
     yum: name=docker state=latest
+  - name: Start the docker service.
+    service: name=docker state=started
   - name: Install java in the test environment.
     yum: name=java state=latest
   - name: copy the package to the test machine
