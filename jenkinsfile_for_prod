@@ -1,18 +1,15 @@
 pipeline {
-    agent any 
-    stages {
-        stage ("1. Build the dockerfile") {
-            steps {
-                sh "yum install docker -y"
-    
-                sh "service docker start"
-            }
-        }
-        
-        stage ("2. Run the container") {
-            steps {
-                sh "docker run -dit -p 8181:80 --name prod-container dgruploads/prod-image "
-            }
-        }
-    }
+	agent {label 'prod-server'}
+	stages {
+		stage ("1.Download the image") {
+			steps {
+				sh "sudo docker pull $image"
+			}
+		}
+		stage ("2. Run the container") {
+			steps {
+				sh "sudo docker run -dit -p 8080:8080 --name $container $image"
+			}
+		}
+	}
 }
