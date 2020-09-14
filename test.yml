@@ -2,19 +2,17 @@
 ########################################################################
 # THIS WILL INSTALL DOCKER, GIT, JAVA AND DOWNLOAD THE JENKINS PACKAGE #
 ########################################################################
-- hosts: testserver
+- hosts: [test-server]
   become: true
   become_method: sudo
   tasks:
-  - name: Install Git.
-    yum: name=git state=latest
-  - name: Install Docker.
+  - name: Install docker in the test environment.
     yum: name=docker state=latest
-  - name: Start the Docker service
-    service: name=docker state=started
-  - name: Install Java.
+  - name: Install java in the test environment.
     yum: name=java state=latest
-  - name: Download the jenkins package.
-    get_url: url=http://mirrors.jenkins.io/war-stable/latest/jenkins.war dest=/home/ec2-user 
-  - name: Start jenkins
-    command: java -jar /home/ec2-user/jenkins.war &
+  - name: copy the package to the test machine
+    copy: src=/home/ec2-user/sample-web-app/target/sample-web-app.war dest=/home/ec2-user
+    ignore_errors: true
+  - name: Copy the dockerfile to the test machine
+    copy: src=/etc/ansible/dockerfile dest=/home/ec2-user/
+    ignore_erros: true
