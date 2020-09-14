@@ -1,6 +1,6 @@
 ---
 ########################################################################
-# THIS WILL INSTALL DOCKER, GIT, JAVA AND DOWNLOAD THE JENKINS PACKAGE #
+# THIS WILL INSTALL DOCKER, JAVA AND COPY THE PACKAGE TO THE TEST      #
 ########################################################################
 - hosts: [test-server]
   become: true
@@ -16,3 +16,7 @@
   - name: Copy the dockerfile to the test machine
     copy: src=/etc/ansible/dockerfile dest=/home/ec2-user/
     ignore_erros: true
+  - name: Create directory for jenkins
+    command: mkdir /home/ec2-user/jenkins
+  - name: Give permissions to the jenkins directory
+    command: chmod 777 /home/ec2-user/jenkins
