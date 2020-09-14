@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Install java on the local machine
+    yum: name=java state=latest
+  - name: Download the jenkins package
+    get_url: url=https://get.jenkins.io/war-stable/2.249.1/jenkins.war dest=/home/ec2-user/
+  - name: Install maven on the local machine
+    command: ./maven.sh
