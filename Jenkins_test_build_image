@@ -1,0 +1,16 @@
+pipeline {
+	agent {label 'test-server'}
+	stages {
+	    stage ("1. Build the dockerfile.") {
+			steps {
+				sh "sudo docker build -t $image /home/ec2-user/"
+			}
+		}
+
+		stage ("2. Run the cotnainer.") {
+			steps {
+				sh "sudo docker run -dit -p 8080:8080 --name $container $image"
+			}
+		}
+	}
+}
