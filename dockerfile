@@ -6,6 +6,6 @@ RUN mkdir /usr/local/tomcat
 RUN wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.68/bin/apache-tomcat-8.5.68.tar.gz -O /tmp/tomcat.tar.gz
 RUN cd /tmp && tar xvfz tomcat.tar.gz
 RUN cp -Rv /tmp/apache-tomcat-8.5.68/* /usr/local/tomcat/
-COPY ./sample-web-app.war /usr/local/tomcat/webapps/
+#COPY ./sample-web-app.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD /usr/local/tomcat/bin/catalina.sh run
