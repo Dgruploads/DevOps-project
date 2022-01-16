@@ -1,0 +1,28 @@
+pipeline {
+	agent {label 'build_server'}
+	triggers {
+        pollSCM('') //Empty quotes tells it to build on a push
+    }
+	stages {
+	    stage ("1. Git repo") {
+	        steps {
+	            git branch: 'develop', url: 'https://github.com/Dgruploads/intellippat_demo_repo.git'
+	        }
+	    }
+		stage ("2. Build the package") {
+			steps {
+				sh "mvn clean install"
+			}
+		}
+		stage ("3. Copy the package to S3") {
+			steps {
+				sh "aws s3 cp target/hello-world-web-app.war s3://dgruploads-package-bucket"
+			}
+		}
+		stage ("4. Build another job") {
+		    steps {
+		        build 'Deploy_pipeline'
+		    }
+		}
+	}
+}
