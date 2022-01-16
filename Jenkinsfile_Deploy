@@ -1,0 +1,15 @@
+pipeline {
+	agent {label 'Deploy_server'}
+		stages {
+		    stage ("Delete the old package") {
+		        steps {
+		            sh "rm -rf /home/ubuntu/apache-tomcat-9.0.56/webapps/hello-world-web-app.war"
+		        }
+		    }
+			stage ("1. Deploy the package.") {
+				steps {
+					sh "wget https://dgruploads-package-bucket.s3.amazonaws.com/hello-world-web-app.war -P /home/ubuntu/apache-tomcat-9.0.56/webapps/"
+				}
+			}
+	}
+}
