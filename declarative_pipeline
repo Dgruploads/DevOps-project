@@ -1,0 +1,22 @@
+pipeline {
+	agent any
+	stages{
+		stage ("1. Clone the github repo") {
+			steps {
+				sh "git clone https://github.com/Dgruploads/intellipaat_demo_new.git"
+			}
+		}
+		stage ("1.This will build the maven package") {
+			steps {
+				sh "mvn clean -f /var/lib/jenkins/workspace/declarative_pipeline_example/intellipaat_demo_new"
+				sh "mvn install -f /var/lib/jenkins/workspace/declarative_pipeline_example/intellipaat_demo_new"
+			}
+		}
+		stage ("2. This will deploy the war package to the tomcat") {
+			steps {
+				sh "rm -rf /tomcat/webapps/hello-world-web-app.war"
+				sh "cp /var/lib/jenkins/workspace/declarative_pipeline_example/intellipaat_demo_new/target/hello-world-web-app.war /tomcat/webapps"
+			}
+		}
+	}
+}
