@@ -1,0 +1,12 @@
+node {
+	stage "clone the github repo"
+	sh "git clone https://github.com/Dgruploads/intellipaat_demo_new.git"
+	
+	stage "1.This will build the maven package"
+	sh "mvn clean -f /var/lib/jenkins/workspace/scripted_pipeline_example/intellipaat_demo_new"
+	sh "mvn install -f /var/lib/jenkins/workspace/scripted_pipeline_example/intellipaat_demo_new"
+
+	stage "2. This will deploy the war package to the tomcat"
+	sh "rm -rf /tomcat/webapps/hello-world-web-app.war"
+	sh "cp /var/lib/jenkins/workspace/scripted_pipeline_example/intellipaat_demo_new/target/hello-world-web-app.war /tomcat/webapps"
+}
