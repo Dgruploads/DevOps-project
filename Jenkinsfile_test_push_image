@@ -7,6 +7,11 @@ pipeline {
 				sh "docker image build -t $docker_image_name ."
 			}
 		}
+		stage ("2. Login to docker hub") {
+			steps {
+				sh "sudo docker login --username $username --password $password"
+			}
+		}
 		stage ("1. Tag the image") {
 			steps {
 				sh "sudo docker tag $docker_image_name $tag_name"
