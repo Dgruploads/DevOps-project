@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage ("1. Build the docker image") {
 			steps {
-				sh "docker image build -t $docker_image_name"
+				sh "docker image build -t $docker_image_name ."
 			}
 		}
 		stage ("1. Tag the image") {
