@@ -8,7 +8,7 @@ pipeline {
 		}
 		stage ("1. Tag the image") {
 			steps {
-				sh "sudo docker tag $image $tag_name"
+				sh "sudo docker tag $docker_image_name $tag_name"
 			}
 		}
 		stage ("2. Login to docker hub") {
