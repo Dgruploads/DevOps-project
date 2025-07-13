@@ -1,5 +1,6 @@
 pipeline {
-	agent {label 'test-server'}
+//	agent {label 'test-server'}
+	agent any
 	stages {
 		stage ("1. Build the docker image") {
 			steps {
