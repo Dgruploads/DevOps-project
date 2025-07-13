@@ -17,11 +17,6 @@ pipeline {
 				sh "sudo docker tag $docker_image_name $tag_name"
 			}
 		}
-		stage ("2. Login to docker hub") {
-			steps {
-				sh "sudo docker login --username $username --password $password"
-			}
-		}
 		stage ("3. Push the image to docker hub") {
 			steps {
 				sh "sudo docker push $tag_name"
